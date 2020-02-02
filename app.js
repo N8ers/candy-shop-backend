@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 // routes
 app.use("/candy", require("./routes/candy"));
+app.use("/bag", require("./routes/bag"));
 
 const PORT = process.env.PORT || 5000;
 
