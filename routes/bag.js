@@ -6,8 +6,8 @@ const Bag = require("../models/Bag");
 router.get("/", (req, res) => {
   Bag.findAll()
     .then(bag => {
-      // console.log("success!");
-      // console.log(bag);
+      console.log("success!");
+      console.log(bag);
       res.sendStatus(200);
     })
     .catch(() => {
@@ -25,11 +25,41 @@ router.post("/add", (req, res) => {
   })
     .then(bag => {
       res.sendStatus(200);
-      // console.log("success! " + bag);
+      console.log("success! " + bag.candy_id);
     })
     .catch(err => {
       res.sendStatus(500);
       console.log("add failure" + err);
+    });
+});
+
+// remove candy from bag
+router.delete(`/remove/:id`, (req, res) => {
+  Bag.destroy({
+    where: {
+      candy_id: req.params.id
+    }
+  })
+    .then(() => {
+      res.sendStatus(200);
+      console.log("candy removed from bag");
+    })
+    .catch(() => {
+      res.sendStatus(500);
+      console.log("something went wrong");
+    });
+});
+
+// remove all candies from bag
+router.delete("/eat", (req, res) => {
+  Bag.destroy({ where: {} })
+    .then(() => {
+      res.sendStatus(200);
+      console.log("ate bag");
+    })
+    .catch(() => {
+      res.sendStatus(500);
+      console.log("something went wrong");
     });
 });
 
