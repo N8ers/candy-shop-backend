@@ -7,11 +7,12 @@ router.get("/", (req, res) => {
   Candy.findAll()
     .then(candy => {
       console.log("success!");
-      console.log(candy);
-      res.sendStatus(200);
+      let candies = candy.map(x => x.dataValues);
+      console.log(candies);
+      res.status(200).send(candies);
     })
     .catch(() => {
-      console.log("error in router");
+      console.log("error in get all candy");
       res.sendStatus(500);
     });
 });
@@ -20,9 +21,9 @@ router.get("/", (req, res) => {
 router.get("/add", (req, res) => {
   console.log("trying to add");
   const data = {
-    name: "sour gummies",
+    name: "mandorin orange dreamcycle",
     candy_image:
-      "https://images.unsplash.com/photo-1499195333224-3ce974eecb47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=948&q=80",
+      "https://images.unsplash.com/photo-1536679887050-4bdea5bf41c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
     candy_type: "sour"
   };
 
