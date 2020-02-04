@@ -2,12 +2,15 @@ const Sequelize = require("sequelize");
 const db = require("../config/database");
 
 const Bag = db.define(
-  "bag",
+  "bagItem",
   {
-    candy_id: {
+    id: {
       type: Sequelize.UUID,
       primaryKey: true,
       defaultValue: Sequelize.UUIDV4
+    },
+    candy_id: {
+      type: Sequelize.STRING
     },
     createdAt: {
       type: Sequelize.DATE

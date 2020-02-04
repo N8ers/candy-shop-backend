@@ -8,11 +8,11 @@ router.get("/", (req, res) => {
     .then(bag => {
       console.log("success!");
       console.log(bag);
-      res.sendStatus(200);
+      res.status(200).send(bag);
     })
     .catch(() => {
       console.log("error in bag router");
-      res.sendStatus(500);
+      res.status(500);
     });
 });
 
