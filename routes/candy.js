@@ -20,11 +20,12 @@ router.get("/", (req, res) => {
 // create candy
 router.get("/add", (req, res) => {
   console.log("trying to add");
+
   const data = {
-    name: "mandorin orange dreamcycle",
+    name: "peppermint swirl",
     candy_image:
       "https://images.unsplash.com/photo-1536679887050-4bdea5bf41c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-    candy_type: "sour"
+    candy_type: "sweet"
   };
 
   let { name, candy_image, candy_type } = data;
